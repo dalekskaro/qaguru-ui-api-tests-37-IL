@@ -18,7 +18,7 @@ Java, Gradle, TestNG, Rest-Assured, Selenide, Allure Reports
 
 # Запуск тестов:
 ```bash
-./gradlew clean test -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition"
+./gradlew clean homework-16 -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition"
 ```
 
 Книги для теста:
