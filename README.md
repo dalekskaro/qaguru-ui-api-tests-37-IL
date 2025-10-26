@@ -6,7 +6,6 @@
 Изучим сложный пример автотеста на чат для приложения поиска работы в стеке
 Java, Gradle, TestNG, Rest-Assured, Selenide, Allure Reports
 **16 REST API. Декомпозируем UI-тесты. Практический блок.**
-
 1. Превращаем UI-взаимодействия в Api-запросы.
 2. Больше возможностей REST-assured
 
@@ -16,6 +15,11 @@ Java, Gradle, TestNG, Rest-Assured, Selenide, Allure Reports
 - Добавить степы, модели и спецификации
 - Реализовать авторизацию с @WithLogin
 - В качестве ответа приложить ссылку на репозиторий и Allure-отчет в Jenkins
+
+# Запуск тестов:
+```bash
+./gradlew clean test -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition"
+```
 
 Книги для теста:
 | isbn          | bookTitle                                 |
