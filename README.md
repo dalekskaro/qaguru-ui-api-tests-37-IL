@@ -5,6 +5,10 @@
 - Реализовать авторизацию с @WithLogin
 - В качестве ответа приложить ссылку на репозиторий и Allure-отчет в Jenkins
 
+## Jenkins & Allure
+**Jenkins:** https://jenkins.autotests.cloud/job/037-attanosolas-lesson16/
+**Allure:** https://jenkins.autotests.cloud/job/037-attanosolas-lesson16/2/allure/
+
 # Запуск тестов:
 ```bash
 ./gradlew clean homework-16 -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition"
