@@ -9,7 +9,7 @@ public class AlertModal {
   @Step("Проверяем, что в алерте есть текст {text}")
   public AlertModal checkTextOnAlert(String text) {
     String alertText = Selenide.switchTo().alert().getText();
-    assertThat(alertText).isEqualTo("Book deleted.");
+    assertThat(alertText).isEqualTo(text);
     return this;
   }
 
