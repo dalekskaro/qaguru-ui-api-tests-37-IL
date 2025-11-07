@@ -1,36 +1,22 @@
 package api;
 
-import static api.EndPoint.LOGIN;
-import static api.EndPoint.USER;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static api.data.AuthData.AUTH_DATA;
 import io.qameta.allure.Step;
 import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
-import java.io.IOException;
 import java.util.List;
-import model.AuthDemoQaModel;
-import org.openqa.selenium.Cookie;
 import static specs.DemoQaSpecification.requestSpecification;
 import static specs.DemoQaSpecification.responseSpecification;
 
 public class AccountApi {
-
-  private AuthDemoQaModel getAuthBody() throws IOException {
-    return new ObjectMapper().readValue(
-        this.getClass().getResource("/json/AuthBody.json"), AuthDemoQaModel.class);
-  }
-
-  public String getUserNameFromJson() throws IOException {
-    return getAuthBody().getUserName();
-  }
+  private static final String LOGIN = "/Account/v1/Login";
+  private static final String USER = "/Account/v1/User";
 
   @Step("Возвращаем response, Авторизация POST " + LOGIN)
-  public Response getResponseAfterLogin() throws IOException {
-    AuthDemoQaModel body = getAuthBody();
+  public Response getResponseAfterLogin() {
 
     return given(requestSpecification)
-        .body(body)
+        .body(AUTH_DATA)
         .when()
         .post(LOGIN)
         .then()
@@ -48,12 +34,5 @@ public class AccountApi {
         .then()
         .spec(responseSpecification(200))
         .extract().response().jsonPath().getList("Books");
-  }
-
-  @Step("Устанавливаем cookie")
-  public void setCookie(Response response) {
-    getWebDriver().manage().addCookie(new Cookie("userID", response.path("userId")));
-    getWebDriver().manage().addCookie(new Cookie("expires", response.path("expires")));
-    getWebDriver().manage().addCookie(new Cookie("token", response.path("token")));
   }
 }

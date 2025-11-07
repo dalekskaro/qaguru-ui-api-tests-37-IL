@@ -11,7 +11,7 @@
 
 # Запуск тестов:
 ```bash
-./gradlew clean homework-16 -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition"
+./gradlew clean homework-16 -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition" -DuserName={USER_NAME} -Dpassword={PASSWORD}
 ```
 
 Книги для теста:

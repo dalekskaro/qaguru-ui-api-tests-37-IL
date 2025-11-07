@@ -2,11 +2,11 @@ package tests;
 
 import api.AccountApi;
 import api.BookApi;
+import static api.data.AuthData.AUTH_DATA;
 import helpers.WithLogin;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
-import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,6 +19,7 @@ import pages.ProfilePage;
 @Epic("DemoQa. Проверка удаления книги через UI с аннотацией @WithLogin")
 @Owner("Irina Attano")
 public class WithAnnotationTests extends BaseTest {
+
   ProfilePage profilePage = new ProfilePage();
   AccountApi accountApi = new AccountApi();
   BookApi bookApi = new BookApi();
@@ -32,7 +33,7 @@ public class WithAnnotationTests extends BaseTest {
   @Test
   @WithLogin
   @DisplayName("Удаление книги у пользователя")
-  void deleteBookWithAnnotationTest() throws IOException {
+  void deleteBookWithAnnotationTest() {
     String isbn = System.getProperty("isbn", "9781449325862"),
         bookTitle = System.getProperty("bookTitle", "Git Pocket Guide");
 
@@ -40,7 +41,7 @@ public class WithAnnotationTests extends BaseTest {
 
     profilePage
         .openProfilePage()
-        .checkUserName(accountApi.getUserNameFromJson())
+        .checkUserName(AUTH_DATA.getUserName())
         .checkBookTitle(bookTitle)
         .clickOnDeleteBookButton()
         .acceptDeleteBookInModal()

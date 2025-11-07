@@ -2,20 +2,19 @@ package helpers;
 
 import api.AccountApi;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import io.restassured.response.Response;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.openqa.selenium.Cookie;
+import utils.CookieHelper;
 
 public class LoginExtension implements BeforeEachCallback {
 
   AccountApi authHelper = new AccountApi();
+  CookieHelper cookieHelper = new CookieHelper();
 
   @Override
-  public void beforeEach(ExtensionContext context) throws IOException {
+  public void beforeEach(ExtensionContext context) {
     Response responseLogin = authHelper.getResponseAfterLogin();
 
     Object testInstance = context.getRequiredTestInstance();
@@ -28,8 +27,6 @@ public class LoginExtension implements BeforeEachCallback {
     }
 
     open("/images/Toolsqa.jpg");
-    getWebDriver().manage().addCookie(new Cookie("userID", responseLogin.path("userId")));
-    getWebDriver().manage().addCookie(new Cookie("expires", responseLogin.path("expires")));
-    getWebDriver().manage().addCookie(new Cookie("token", responseLogin.path("token")));
+    cookieHelper.setCookie(responseLogin);
   }
 }
