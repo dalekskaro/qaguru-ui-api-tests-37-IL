@@ -1,6 +1,5 @@
 package api;
 
-import static api.EndPoint.BOOKS;
 import io.qameta.allure.Step;
 import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
@@ -9,6 +8,7 @@ import static specs.DemoQaSpecification.requestSpecification;
 import static specs.DemoQaSpecification.responseSpecification;
 
 public class BookApi {
+  private static final String BOOKS = "/BookStore/v1/Books";
 
   @Step("Добавляем книгу пользователю POST " + BOOKS)
   public void postBook(Response response, String isbn) {

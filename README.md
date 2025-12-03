@@ -1,21 +1,18 @@
-# qaguru-ui-api-tests-37-IL
-
-**15 REST API. Улучшаем UI-тесты**
-Длинные UI автотесты - антипаттерн. Обсудим как стабилизировать, облегчить и ускорить наши автотесты за счет переноса
-части шагов с UI на API слой.
-Изучим сложный пример автотеста на чат для приложения поиска работы в стеке
-Java, Gradle, TestNG, Rest-Assured, Selenide, Allure Reports
-**16 REST API. Декомпозируем UI-тесты. Практический блок.**
-
-1. Превращаем UI-взаимодействия в Api-запросы.
-2. Больше возможностей REST-assured
-
 # Задание
 
 - Разработать автотест на удаление товара из списка https://demoqa.com/profile
 - Добавить степы, модели и спецификации
 - Реализовать авторизацию с @WithLogin
 - В качестве ответа приложить ссылку на репозиторий и Allure-отчет в Jenkins
+
+## Jenkins & Allure
+**Jenkins:** https://jenkins.autotests.cloud/job/037-attanosolas-lesson16/
+**Allure:** https://jenkins.autotests.cloud/job/037-attanosolas-lesson16/2/allure/
+
+# Запуск тестов:
+```bash
+./gradlew clean homework-16 -Disbn="9781593275846" -DbookTitle="Eloquent JavaScript, Second Edition" -DuserName={USER_NAME} -Dpassword={PASSWORD}
+```
 
 Книги для теста:
 | isbn          | bookTitle                                 |

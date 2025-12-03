@@ -3,34 +3,27 @@ package tests;
 import api.AccountApi;
 import api.BookApi;
 import static api.data.AuthData.AUTH_DATA;
+import helpers.WithLogin;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
-import utils.CookieHelper;
 
 @Tag("homework-16")
-@Epic("DemoQa. Проверка удаления книги через UI")
+@Epic("DemoQa. Проверка удаления книги через UI с аннотацией @WithLogin")
 @Owner("Irina Attano")
-public class WithoutAnnotationTests extends BaseTest {
+public class WithAnnotationTests extends BaseTest {
 
   ProfilePage profilePage = new ProfilePage();
   AccountApi accountApi = new AccountApi();
   BookApi bookApi = new BookApi();
-  CookieHelper cookieHelper = new CookieHelper();
   Response responseLogin;
-
-  @BeforeEach
-  void auth() {
-    responseLogin = accountApi.getResponseAfterLogin();
-  }
 
   @AfterEach
   void deleteBooks() {
@@ -38,14 +31,12 @@ public class WithoutAnnotationTests extends BaseTest {
   }
 
   @Test
+  @WithLogin
   @DisplayName("Удаление книги у пользователя")
-  void deleteBookTest() {
+  void deleteBookWithAnnotationTest() {
     String isbn = System.getProperty("isbn", "9781449325862"),
         bookTitle = System.getProperty("bookTitle", "Git Pocket Guide");
 
-    profilePage.openImagesPage();
-
-    cookieHelper.setCookie(responseLogin);
     bookApi.postBook(responseLogin, isbn);
 
     profilePage
