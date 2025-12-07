@@ -19,7 +19,8 @@ def restAssuredVersion = '5.5.2',
     assertjVersion = '3.27.3',
     fakerVersion = '1.0.2',
     selenideVersion = '7.9.3',
-    allureSelenideVersion = '2.29.1'
+    allureSelenideVersion = '2.29.1',
+    ownerVersion = '1.0.12'
 
 allure {
     report {
@@ -46,7 +47,8 @@ dependencies {
             "org.assertj:assertj-core:$assertjVersion",
             "com.github.javafaker:javafaker:$fakerVersion",
             "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureSelenideVersion"
+            "io.qameta.allure:allure-selenide:$allureSelenideVersion",
+            "org.aeonbits.owner:owner:$ownerVersion"
     )
 }
 
