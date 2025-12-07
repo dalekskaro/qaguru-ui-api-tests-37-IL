@@ -9,5 +9,5 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(LoginExtension.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface WithLogin {
+public @interface WithLoginUi {
 }

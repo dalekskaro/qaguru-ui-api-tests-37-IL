@@ -61,10 +61,3 @@ tasks.withType(Test) {
         }
     }
 }
-
-tasks.register('homework-16', Test) {
-    systemProperties(System.getProperties())
-    useJUnitPlatform {
-        includeTags("homework-16")
-    }
-}

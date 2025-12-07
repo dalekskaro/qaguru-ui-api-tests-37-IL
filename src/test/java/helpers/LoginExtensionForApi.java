@@ -1,18 +1,15 @@
 package helpers;
 
 import api.AccountApi;
-import static com.codeborne.selenide.Selenide.open;
 import io.restassured.response.Response;
 import java.lang.reflect.Field;
 import java.time.Instant;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import utils.CookieHelper;
 
-public class LoginExtension implements BeforeEachCallback {
+public class LoginExtensionForApi implements BeforeEachCallback {
 
   AccountApi authHelper = new AccountApi();
-  CookieHelper cookieHelper = new CookieHelper();
 
   @Override
   public void beforeEach(ExtensionContext context) {
@@ -36,8 +33,5 @@ public class LoginExtension implements BeforeEachCallback {
     } catch (NoSuchFieldException | IllegalAccessException e) {
       throw new RuntimeException("Не удалось установить responseLogin в тестовый класс", e);
     }
-
-    open("/images/Toolsqa.jpg");
-    cookieHelper.setCookie(responseLogin);
   }
 }

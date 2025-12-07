@@ -1,4 +1,4 @@
-package tests;
+package tests.apiui;
 
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Selenide.closeWebDriver;

@@ -1,24 +1,26 @@
-package tests;
+package tests.apiui;
 
 import api.AccountApi;
 import api.BookApi;
 import static api.data.AuthData.AUTH_DATA;
-import helpers.WithLogin;
+import helpers.WithLoginUi;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
+import static java.lang.System.getProperty;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
 
-@Tag("homework-16")
-@Epic("DemoQa. Проверка удаления книги через UI с аннотацией @WithLogin")
+
+@Epic("BookStore")
+@Story("Удаление книги")
 @Owner("Irina Attano")
-public class WithAnnotationTests extends BaseTest {
+public class DeleteBookTests extends BaseTest {
 
   ProfilePage profilePage = new ProfilePage();
   AccountApi accountApi = new AccountApi();
@@ -31,11 +33,11 @@ public class WithAnnotationTests extends BaseTest {
   }
 
   @Test
-  @WithLogin
-  @DisplayName("Удаление книги у пользователя")
-  void deleteBookWithAnnotationTest() {
-    String isbn = System.getProperty("isbn", "9781449325862"),
-        bookTitle = System.getProperty("bookTitle", "Git Pocket Guide");
+  @WithLoginUi
+  @DisplayName("Удаление книги у пользователя через UI")
+  void deleteBookTest() {
+    String isbn = getProperty("isbn", "9781449325862"),
+        bookTitle = getProperty("bookTitle", "Git Pocket Guide");
 
     bookApi.postBook(responseLogin, isbn);
 
