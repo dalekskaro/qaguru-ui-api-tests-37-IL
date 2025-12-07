@@ -14,11 +14,13 @@ import model.IsbnModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Epic("BookStore")
 @Story("Добавление книги")
 @Owner("Irina Attano")
+@Tag("api")
 public class PostBookTests {
 
   BookApi bookApi = new BookApi();

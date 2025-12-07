@@ -13,11 +13,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Epic("BookStore")
 @Story("Удаление книги")
 @Owner("Irina Attano")
+@Tag("api")
 public class DeleteBookTests {
 
   BookApi bookApi = new BookApi();

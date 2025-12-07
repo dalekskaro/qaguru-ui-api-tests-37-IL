@@ -63,3 +63,10 @@ tasks.withType(Test) {
         }
     }
 }
+
+tasks.register('apiTest', Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform {
+        includeTags("api")
+    }
+}

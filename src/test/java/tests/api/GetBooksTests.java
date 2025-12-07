@@ -10,11 +10,13 @@ import model.BookDemoQaModel;
 import model.BooksDemoQaModel;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Epic("BookStore")
 @Story("Проверка получения информации об книгах")
 @Owner("Irina Attano")
+@Tag("api")
 public class GetBooksTests {
 
   BookApi bookApi = new BookApi();

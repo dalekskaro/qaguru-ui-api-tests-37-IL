@@ -10,11 +10,13 @@ import java.time.Year;
 import model.GenerateTokenDemoQaModel;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Epic("Account")
 @Story("Генерация токена")
 @Owner("Irina Attano")
+@Tag("api")
 public class GenerateTokenTests {
 
   String year = String.valueOf(Year.now().getValue());
