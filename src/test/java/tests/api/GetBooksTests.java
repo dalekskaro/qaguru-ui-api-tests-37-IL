@@ -1,6 +1,7 @@
 package tests.api;
 
 import api.BookApi;
+import static io.qameta.allure.Allure.step;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
@@ -26,30 +27,33 @@ public class GetBooksTests {
     BooksDemoQaModel responseBooks = bookApi.getBooksReturnResponse();
     BookDemoQaModel book = responseBooks.getBooks().get(0);
 
-    SoftAssertions.assertSoftly(softAssertions -> {
-      softAssertions.assertThat(book.getIsbn())
-          .describedAs("Проверяем значение isbn")
-          .isEqualTo("9781449325862");
+    step("Проверяем тело ответа", () ->
+    {
+      SoftAssertions.assertSoftly(softAssertions -> {
+        softAssertions.assertThat(book.getIsbn())
+            .describedAs("Проверяем значение isbn")
+            .isEqualTo("9781449325862");
 
-      softAssertions.assertThat(book.getTitle())
-          .describedAs("Проверяем значение title")
-          .isEqualTo("Git Pocket Guide");
+        softAssertions.assertThat(book.getTitle())
+            .describedAs("Проверяем значение title")
+            .isEqualTo("Git Pocket Guide");
 
-      softAssertions.assertThat(book.getAuthor())
-          .describedAs("Проверяем значение author")
-          .isEqualTo("Richard E. Silverman");
+        softAssertions.assertThat(book.getAuthor())
+            .describedAs("Проверяем значение author")
+            .isEqualTo("Richard E. Silverman");
 
-      softAssertions.assertThat(book.getPages())
-          .describedAs("Проверяем значение pages")
-          .isEqualTo(234);
+        softAssertions.assertThat(book.getPages())
+            .describedAs("Проверяем значение pages")
+            .isEqualTo(234);
 
-      softAssertions.assertThat(book.getDescription())
-          .describedAs("Проверяем значение description")
-          .contains("This pocket guide");
+        softAssertions.assertThat(book.getDescription())
+            .describedAs("Проверяем значение description")
+            .contains("This pocket guide");
 
-      softAssertions.assertThat(book.getWebsite())
-          .describedAs("Проверяем значение website")
-          .contains("chimera.labs.oreilly");
+        softAssertions.assertThat(book.getWebsite())
+            .describedAs("Проверяем значение website")
+            .contains("chimera.labs.oreilly");
+      });
     });
   }
 
@@ -61,30 +65,33 @@ public class GetBooksTests {
 
     BookDemoQaModel book = bookApi.getBookReturnResponse(isbn);
 
-    SoftAssertions.assertSoftly(softAssertions -> {
-      softAssertions.assertThat(book.getIsbn())
-          .describedAs("Проверяем значение isbn")
-          .isEqualTo(isbn);
+    step("Проверяем тело ответа", () ->
+    {
+      SoftAssertions.assertSoftly(softAssertions -> {
+        softAssertions.assertThat(book.getIsbn())
+            .describedAs("Проверяем значение isbn")
+            .isEqualTo(isbn);
 
-      softAssertions.assertThat(book.getTitle())
-          .describedAs("Проверяем значение title")
-          .isEqualTo("Git Pocket Guide");
+        softAssertions.assertThat(book.getTitle())
+            .describedAs("Проверяем значение title")
+            .isEqualTo("Git Pocket Guide");
 
-      softAssertions.assertThat(book.getAuthor())
-          .describedAs("Проверяем значение author")
-          .isEqualTo("Richard E. Silverman");
+        softAssertions.assertThat(book.getAuthor())
+            .describedAs("Проверяем значение author")
+            .isEqualTo("Richard E. Silverman");
 
-      softAssertions.assertThat(book.getPages())
-          .describedAs("Проверяем значение pages")
-          .isEqualTo(234);
+        softAssertions.assertThat(book.getPages())
+            .describedAs("Проверяем значение pages")
+            .isEqualTo(234);
 
-      softAssertions.assertThat(book.getDescription())
-          .describedAs("Проверяем значение description")
-          .contains("This pocket guide");
+        softAssertions.assertThat(book.getDescription())
+            .describedAs("Проверяем значение description")
+            .contains("This pocket guide");
 
-      softAssertions.assertThat(book.getWebsite())
-          .describedAs("Проверяем значение website")
-          .contains("chimera.labs.oreilly");
+        softAssertions.assertThat(book.getWebsite())
+            .describedAs("Проверяем значение website")
+            .contains("chimera.labs.oreilly");
+      });
     });
   }
 }

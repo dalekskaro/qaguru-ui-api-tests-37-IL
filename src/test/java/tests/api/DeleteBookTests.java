@@ -2,6 +2,7 @@ package tests.api;
 
 import api.BookApi;
 import helpers.WithLoginApi;
+import static io.qameta.allure.Allure.step;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
@@ -41,7 +42,11 @@ public class DeleteBookTests {
   void deleteBookTest() {
 
     int status = bookApi.deleteBookReturnStatus(responseLogin, isbn);
-    Assertions.assertEquals(204, status,
-        "Ожидаемый статус 204 не соответствует фактическому " + status);
+
+    step("Проверяем статус ответа", () ->
+    {
+      Assertions.assertEquals(204, status,
+          "Ожидаемый статус 204 не соответствует фактическому " + status);
+    });
   }
 }

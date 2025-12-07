@@ -2,6 +2,7 @@ package tests.api;
 
 import api.BookApi;
 import helpers.WithLoginApi;
+import static io.qameta.allure.Allure.step;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
@@ -39,7 +40,10 @@ public class PostBookTests {
     BooksIsbnModel responseBooks = bookApi.postBookReturnResponse(responseLogin, isbn);
     IsbnModel resposeIsbn = responseBooks.getBooks().get(0);
 
-    Assertions.assertEquals(isbn, resposeIsbn.getIsbn(),
-        "Ожидаемое значение isbn " + isbn + "не соответствует фактическому " + resposeIsbn.getIsbn());
+    step("Проверяем тело ответа", () ->
+    {
+      Assertions.assertEquals(isbn, resposeIsbn.getIsbn(),
+          "Ожидаемое значение isbn " + isbn + "не соответствует фактическому " + resposeIsbn.getIsbn());
+    });
   }
 }

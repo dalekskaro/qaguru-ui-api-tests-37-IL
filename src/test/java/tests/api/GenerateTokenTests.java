@@ -1,6 +1,7 @@
 package tests.api;
 
 import api.AccountApi;
+import static io.qameta.allure.Allure.step;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
@@ -25,22 +26,25 @@ public class GenerateTokenTests {
   void getBooksTest() {
     GenerateTokenDemoQaModel response = accountApi.generateTokenReturnResponse();
 
-    SoftAssertions.assertSoftly(softAssertions -> {
-      softAssertions.assertThat(response.getToken())
-          .describedAs("Проверяем, что значение token не пусто")
-          .isNotNull();
+    step("Проверяем тело ответа", () ->
+    {
+      SoftAssertions.assertSoftly(softAssertions -> {
+        softAssertions.assertThat(response.getToken())
+            .describedAs("Проверяем, что значение token не пусто")
+            .isNotNull();
 
-      softAssertions.assertThat(response.getStatus())
-          .describedAs("Проверяем значение status")
-          .isEqualTo("Success");
+        softAssertions.assertThat(response.getStatus())
+            .describedAs("Проверяем значение status")
+            .isEqualTo("Success");
 
-      softAssertions.assertThat(response.getResult())
-          .describedAs("Проверяем значение result")
-          .isEqualTo("User authorized successfully.");
+        softAssertions.assertThat(response.getResult())
+            .describedAs("Проверяем значение result")
+            .isEqualTo("User authorized successfully.");
 
-      softAssertions.assertThat(response.getExpires())
-          .describedAs("Проверяем, что значение expires содержит текущий год")
-          .contains(year);
+        softAssertions.assertThat(response.getExpires())
+            .describedAs("Проверяем, что значение expires содержит текущий год")
+            .contains(year);
+      });
     });
   }
 }
