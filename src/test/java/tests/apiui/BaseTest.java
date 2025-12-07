@@ -1,26 +1,32 @@
-package tests;
+package tests.apiui;
 
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import java.util.Map;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BaseTest {
+  private static final WebDriverConfig config = ConfigFactory.create(
+      WebDriverConfig.class,
+      System.getProperties()
+  );
 
   @BeforeAll
   static void setEnv() {
-    Configuration.baseUrl = "https://demoqa.com";
-    Configuration.browser = System.getProperty("browser", "chrome");
-    Configuration.browserVersion = System.getProperty("browserVersion");
-    Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
-    Configuration.pageLoadStrategy = "eager";
-    Configuration.remote = System.getProperty("remote");
+    Configuration.baseUrl = config.baseUrl();
+    Configuration.browser = config.browser();
+    Configuration.browserVersion = config.browserVersion();
+    Configuration.browserSize = config.browserResolution();
+    Configuration.pageLoadStrategy = config.pageLoadStrategy();
+    Configuration.remote = config.remoteUrl();
 
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(

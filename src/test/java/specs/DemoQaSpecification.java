@@ -1,6 +1,5 @@
 package specs;
 
-import static com.codeborne.selenide.Configuration.baseUrl;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -18,7 +17,7 @@ public class DemoQaSpecification {
       .log().body()
       .log().headers()
       .contentType(JSON)
-      .baseUri(baseUrl);
+      .baseUri("https://demoqa.com/");
 
   public static ResponseSpecification responseSpecification(int code) {
     return new ResponseSpecBuilder()
