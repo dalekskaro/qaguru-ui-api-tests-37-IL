@@ -7,12 +7,12 @@
 - [Стек технологий](#dvd-стек-технологий)
 - [Реализованные проверки](#mag-реализованные-проверки)
 - [Запуск автотестов](#crystal_ball-запуск-автотестов)
-- [Сборка Jenkins](#oncoming_automobile-сборка-jenkins--037-attanosolas-cyberpunk2077)
+- [Сборка Jenkins](#oncoming_automobile-сборка-jenkins--037-attanosolas-api)
 - [Отчет Allure](#bar_chart-отчет-allure)
 - [TMS ТестОпс](#blue_book-tms-тестопс)
-- [Задача в Jira](#information_source-задача-в-jira-homework-1550)
+- [Задача в Jira](#information_source-задача-в-jira-homework-1557)
 - [Уведомление в Telegram](#bell-уведомление-в-telegram)
-- [Видео примера запуска тестов в Selenoid](#movie_camera-видео-примера-запуска-тестов-в-selenoid)
+- [Видео примера запуска теста в Selenoid](#movie_camera-видео-примера-запуска-теста-в-selenoid)
 ---
 
 ---
@@ -99,8 +99,7 @@ allure serve build/allure-results
 </p>
 
 ---
-## :bar_chart: [Отчет Allure](https://jenkins.autotests.cloud/job/037-attanosolas-cyberpunk2077/1/allure/)
-**TODO TODO TODO**
+## :bar_chart: [Отчет Allure](https://jenkins.autotests.cloud/job/037-attanosolas-api/9/allure/)
 Главная страница отчета
 <p align="center">
 <img width="50%" title="allureRMain" src="media/screenshot/allureRMain.png">
@@ -129,15 +128,13 @@ allure serve build/allure-results
 
 ---
 ## :bell: Уведомление в Telegram
-**TODO TODO TODO**
 <p align="center">
 <img width="20%" title="tg" src="media/screenshot/tg.png">
 </p>
 
 ---
-## :movie_camera: Видео примера запуска тестов в Selenoid
-**TODO TODO TODO**
-К каждому тесту в отчете прилагается видео прогона
+## :movie_camera: Видео примера запуска теста в Selenoid
+К тесту со связкой UI+API в отчете прилагается видео прогона
 <p align="center">
-<img width="50%" title="Video" src="media/screenshot/cp2077.gif">
+<img width="50%" title="Video" src="media/screenshot/demoqa.gif">
 </p>
